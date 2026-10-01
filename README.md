@@ -4,6 +4,8 @@ CloneGuard is an AI/ML-powered web application designed to identify potentially 
 
 The project combines a **Machine Learning model**, **Flask REST API**, and **React + Vite frontend** to provide an interactive account risk assessment.
 
+> **Note:** CloneGuard is a portfolio/MVP project and is not intended to make real-world financial or identity decisions without additional verification.
+
 ---
 
 ## 🚀 Project Overview
@@ -19,7 +21,13 @@ CloneGuard analyzes multiple account-level signals and generates:
 
 The goal is to demonstrate how machine learning can support **early fraud screening and account verification workflows**.
 
-> **Note:** CloneGuard is a portfolio/MVP project and is not intended to make real-world financial or identity decisions without additional verification.
+---
+
+## 🎯 Project Goal
+
+The purpose of CloneGuard is to demonstrate how machine learning can be used to analyze multiple account-level signals and identify potentially suspicious patterns associated with cloned, impersonated, or fraudulent accounts.
+
+Rather than treating a single signal as proof of fraud, CloneGuard combines multiple indicators to generate an overall risk assessment that can support further investigation or verification.
 
 ---
 
@@ -27,7 +35,7 @@ The goal is to demonstrate how machine learning can support **early fraud screen
 
 ### 🔍 Account Risk Detection
 
-The system evaluates account information such as:
+The system evaluates account-level signals such as:
 
 * Username similarity
 * Account age
@@ -58,7 +66,9 @@ CloneGuard currently uses a **Random Forest Classifier** for fraud classificatio
 
 The model was evaluated on a held-out test set containing **1,000 previously unseen records**.
 
-### 📈 Model Evaluation
+---
+
+## 📈 Model Evaluation
 
 | Metric    | Test Result |
 | --------- | ----------: |
@@ -80,7 +90,7 @@ The model correctly identified **124 of 154 fraudulent accounts** in the test se
 
 ## 🔎 Feature Importance
 
-The model's feature-importance analysis showed the following major contributors:
+The Random Forest model identified the following features as major contributors:
 
 | Feature              | Importance |
 | -------------------- | ---------: |
@@ -173,7 +183,7 @@ clone-account-fraud-detection/
 ├── frontend/
 │   ├── public/
 │   └── src/
-│       ├── ml/
+│       ├── App-backup.jsx/
 │       ├── App.jsx
 │       ├── App.css
 │       ├── index.css
@@ -186,7 +196,8 @@ clone-account-fraud-detection/
 │   ├── 01_eda.ipynb
 │   └── 02_model_evaluation.ipynb
 │
-├── reports/
+├── src/
+│   └── generate_data.py
 │
 ├── README.md
 └── .gitignore
@@ -224,7 +235,7 @@ The current dataset contains:
 * **14 input features**
 * **1 target variable (`is_fraud`)**
 
-Class distribution:
+### Class Distribution
 
 | Class   | Records | Percentage |
 | ------- | ------: | ---------: |
@@ -244,7 +255,7 @@ Training set → 4,000 records
 Testing set  → 1,000 records
 ```
 
-A fresh Random Forest model was trained using the training portion and evaluated on the unseen testing portion.
+A Random Forest model was trained using the training portion and evaluated on the unseen testing portion.
 
 ### Test Performance
 
@@ -261,7 +272,7 @@ An earlier evaluation of the saved model on the complete 5,000-record dataset pr
 
 For this reason, the **92.40% test accuracy** and corresponding test metrics above are reported as the more relevant evaluation results.
 
-The current dataset is synthetic/portfolio-oriented and may not represent the complexity, distribution, or adversarial behavior of real-world fraudulent accounts. Therefore, these results should not be interpreted as production-level fraud-detection performance.
+The current dataset is synthetic and portfolio-oriented. It may not represent the complexity, distribution, or adversarial behavior of real-world fraudulent accounts. Therefore, these results should not be interpreted as production-level fraud-detection performance.
 
 ---
 
@@ -301,6 +312,67 @@ Possible improvements include:
 
 ---
 
-## 🎯 Project Goal
+## 🚀 Getting Started
 
-The purpose of CloneGuard is to dem
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/kunjansharma008/clone-account-fraud-detection.git
+cd clone-account-fraud-detection
+```
+
+### 2. Backend setup
+
+```bash
+cd backend
+python -m venv .venv
+```
+
+Activate the virtual environment on Windows:
+
+```bash
+.venv\Scripts\activate
+```
+
+Install dependencies:
+
+```bash
+pip install flask flask-cors pandas numpy scikit-learn joblib
+```
+
+Start the Flask API:
+
+```bash
+python app.py
+```
+
+### 3. Frontend setup
+
+Open another terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The frontend will then be available through the Vite development server.
+
+---
+
+## 📌 Disclaimer
+
+CloneGuard is an educational and portfolio project demonstrating an AI/ML-based fraud-risk assessment workflow.
+
+The predictions are model-generated estimates and should not be considered definitive evidence of fraud, identity theft, or malicious activity. Real-world deployment would require appropriate validation, security controls, privacy protections, human review, and compliance requirements.
+
+---
+
+## 👤 Author
+
+**Kunjan Sharma**
+
+B.Sc. Computer Science — Data Science
+Galgotias University
+
+GitHub: [@kunjansharma008](https://github.com/kunjansharma008)
