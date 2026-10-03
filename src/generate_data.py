@@ -19,9 +19,9 @@ profile_completeness = np.random.randint(30, 101, N)
 # Higher value = username looks more similar to another account
 username_similarity = np.round(np.random.uniform(0, 1, N), 2)
 
-# -----------------------------
+# ------------------------------
 # Login & Device Behaviour
-# -----------------------------
+# ------------------------------
 
 login_frequency = np.random.poisson(5, N)
 new_device_logins = np.random.poisson(1, N)
